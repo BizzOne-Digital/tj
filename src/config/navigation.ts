@@ -62,8 +62,13 @@ export const mainNavigation: NavItem[] = [
       { label: "Sponsors", href: "/sponsors" },
       { label: "FAQ", href: "/faq" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Gear Store (Game One)", href: "/shop" },
-      { label: "Gear Store Sale", href: "/mountie-gear-for-sale" },
+      {
+        label: "Gear Store",
+        children: [
+          { label: "Official Team Store (Game One)", href: "/shop" },
+          { label: "Gear Store For Sale", href: "/mountie-gear-for-sale" },
+        ],
+      },
       { label: "Join", href: "/join" },
       { label: "Donate", href: "/donate" },
       { label: "Contact", href: "/contact" },

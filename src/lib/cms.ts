@@ -296,7 +296,9 @@ function collectNavHrefs(items: NavItem[], hrefs: Set<string>): void {
 /** Add new config links (e.g. Mountie Gear For Sale) without wiping custom CMS navigation. */
 function moreMenuChildHrefs(): Set<string> {
   const more = mainNavigation.find((item) => item.label === "More")?.children ?? [];
-  return new Set(more.map((child) => child.href).filter((href): href is string => Boolean(href)));
+  const hrefs = new Set<string>();
+  collectNavHrefs(more, hrefs);
+  return hrefs;
 }
 
 function mergeNavigationFromConfig(stored: NavItem[]): NavItem[] {

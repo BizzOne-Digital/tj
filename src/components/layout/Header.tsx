@@ -10,29 +10,90 @@ import { IconMenu, IconClose, IconChevronDown } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
+function navPathMatches(pathname: string, href: string): boolean {
+  const [childPath, childHash] = href.split("#");
+  const pathOnly = childPath.split("?")[0];
+  if (childHash && pathOnly === "/" && pathname === "/") {
+    return true;
+  }
+  return pathname === pathOnly || (pathOnly.length > 1 && pathname.startsWith(pathOnly));
+}
+
+function childrenContainPath(children: NavItem[], pathname: string): boolean {
+  for (const child of children) {
+    if (child.href && navPathMatches(pathname, child.href)) {
+      return true;
+    }
+    if (child.children && childrenContainPath(child.children, pathname)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function findActiveNavSection(pathname: string, navigation: NavItem[]): string {
   for (const item of navigation) {
     if (item.href && pathname === item.href) {
       return item.label;
     }
-    if (item.children) {
-      for (const child of item.children) {
-        const childHref = child.href ?? "";
-        const [childPath, childHash] = childHref.split("#");
-        const pathOnly = childPath.split("?")[0];
-        if (childHash && pathOnly === "/" && pathname === "/") {
-          return item.label;
-        }
-        if (
-          pathname === pathOnly ||
-          (pathOnly.length > 1 && pathname.startsWith(pathOnly))
-        ) {
-          return item.label;
-        }
-      }
+    if (item.children && childrenContainPath(item.children, pathname)) {
+      return item.label;
     }
   }
   return navigation[0].label;
+}
+
+function NavDropdownChildren({
+  items,
+  pathname,
+  onNavigate,
+  topLinkClassName,
+  nestedLinkClassName,
+  groupTitleClassName,
+}: {
+  items: NavItem[];
+  pathname: string;
+  onNavigate?: () => void;
+  topLinkClassName: string;
+  nestedLinkClassName: string;
+  groupTitleClassName: string;
+}) {
+  return items.map((child) => {
+    if (child.children?.length) {
+      return (
+        <div key={child.label} className="border-t border-white/10 py-1 first:border-t-0">
+          <p className={groupTitleClassName}>{child.label}</p>
+          {child.children.map((sub) => {
+            const isActive = sub.href ? isChildLinkActive(pathname, sub.href) : false;
+            return (
+              <Link
+                key={sub.href}
+                href={sub.href!}
+                className={cn(nestedLinkClassName, isActive && "text-electric-blue")}
+                onClick={onNavigate}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {sub.label}
+              </Link>
+            );
+          })}
+        </div>
+      );
+    }
+
+    const isActive = child.href ? isChildLinkActive(pathname, child.href) : false;
+    return (
+      <Link
+        key={child.href ?? child.label}
+        href={child.href!}
+        className={cn(topLinkClassName, isActive && "text-electric-blue")}
+        onClick={onNavigate}
+        aria-current={isActive ? "page" : undefined}
+      >
+        {child.label}
+      </Link>
+    );
+  });
 }
 
 function isChildLinkActive(pathname: string, href: string): boolean {
@@ -158,28 +219,18 @@ export function Header({ navigation = mainNavigation }: { navigation?: NavItem[]
                   </Link>
                 ) : (
                   <ul className="flex flex-col gap-1">
-                    {activeMobileItem?.children?.map((child) => {
-                      const isActive = child.href
-                        ? isChildLinkActive(pathname, child.href)
-                        : false;
-                      return (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href!}
-                            className={cn(
-                              "block rounded-md px-3 py-2.5 text-sm leading-snug transition-colors",
-                              isActive
-                                ? "bg-electric-blue/15 font-semibold text-electric-blue"
-                                : "text-white/85 hover:bg-white/5 hover:text-electric-blue",
-                            )}
-                            onClick={closeMobileMenu}
-                            aria-current={isActive ? "page" : undefined}
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      );
-                    })}
+                    {activeMobileItem?.children && (
+                      <li>
+                        <NavDropdownChildren
+                          items={activeMobileItem.children}
+                          pathname={pathname}
+                          onNavigate={closeMobileMenu}
+                          groupTitleClassName="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-wide text-electric-blue/90"
+                          topLinkClassName="block rounded-md px-3 py-2.5 text-sm leading-snug text-white/85 transition-colors hover:bg-white/5 hover:text-electric-blue"
+                          nestedLinkClassName="block rounded-md py-2 pl-6 pr-3 text-sm leading-snug text-white/85 transition-colors hover:bg-white/5 hover:text-electric-blue"
+                        />
+                      </li>
+                    )}
                   </ul>
                 )}
               </div>
@@ -237,16 +288,14 @@ export function Header({ navigation = mainNavigation }: { navigation?: NavItem[]
                     <IconChevronDown className="h-3 w-3" />
                   </button>
                   {openDropdown === item.label && (
-                    <div className="absolute left-0 top-full min-w-[220px] rounded-md border border-white/10 bg-deep-navy py-2 shadow-xl">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href!}
-                          className="block px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-electric-blue/10 hover:text-electric-blue"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="absolute left-0 top-full min-w-[240px] rounded-md border border-white/10 bg-deep-navy py-2 shadow-xl">
+                      <NavDropdownChildren
+                        items={item.children}
+                        pathname={pathname}
+                        groupTitleClassName="px-4 pb-1 pt-2 text-[11px] font-bold uppercase tracking-wide text-electric-blue/90"
+                        topLinkClassName="block px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-electric-blue/10 hover:text-electric-blue"
+                        nestedLinkClassName="block py-2 pl-8 pr-4 text-sm text-white/80 transition-colors hover:bg-electric-blue/10 hover:text-electric-blue"
+                      />
                     </div>
                   )}
                 </div>
