@@ -315,7 +315,7 @@ function mergeNavigationFromConfig(stored: NavItem[]): NavItem[] {
   const configMoreItem = mainNavigation.find((nav) => nav.label === "More");
   const configMoreChildren = configMoreItem?.children ?? [];
 
-  let merged = storedWithoutDuplicateTopLevel.map((item) => {
+  const merged = storedWithoutDuplicateTopLevel.map((item) => {
     if (item.label !== "More") return item;
     collectNavHrefs(configMoreChildren, hrefs);
     return { ...item, children: configMoreChildren };
