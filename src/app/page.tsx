@@ -355,7 +355,7 @@ export default async function HomePage() {
         <RevealOnScroll>
           <SectionHeading eyebrow="News" title="Latest Updates" light />
         </RevealOnScroll>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="relative z-0 mt-10 grid gap-6 md:grid-cols-3">
           {featuredNews.map((article) => (
             <Link
               key={article.slug}
@@ -380,8 +380,13 @@ export default async function HomePage() {
             </Link>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <Button href="/news" variant="outline">All News</Button>
+        <div className="relative z-10 mt-8 flex justify-center">
+          <Link
+            href="/news"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm border-2 border-white/30 bg-deep-navy px-8 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:border-electric-blue hover:text-electric-blue touch-manipulation"
+          >
+            All News
+          </Link>
         </div>
       </ContentSection>
 

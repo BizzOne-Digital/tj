@@ -49,9 +49,8 @@ export function Button({
   useEffect(() => {
     if (!ref.current || reduced || typeof window === "undefined") return;
     const el = ref.current;
-    const isTouch = "ontouchstart" in window;
-
-    if (isTouch) return;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!canHover) return;
 
     const onMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect();
@@ -63,16 +62,22 @@ export function Button({
       el.style.transform = "";
     };
 
+    const onTouchEnd = () => {
+      el.style.transform = "";
+    };
+
     el.addEventListener("mousemove", onMove);
     el.addEventListener("mouseleave", onLeave);
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
     return () => {
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
+      el.removeEventListener("touchend", onTouchEnd);
     };
   }, [reduced]);
 
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-sm font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue",
+    "relative z-0 inline-flex touch-manipulation items-center justify-center gap-2 rounded-sm font-semibold uppercase tracking-wider transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue",
     variants[variant],
     sizes[size],
     disabled && "pointer-events-none opacity-50",
