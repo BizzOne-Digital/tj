@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { PageHero, ContentSection } from "@/components/ui/Section";
 import { Fall3On3TabNav } from "@/components/layout/ProgramTabNav";
-import { CmsImage } from "@/components/ui/CmsImage";
-import { fall3On3NewsWeeks, isFall3On3NewsSlug } from "@/data/fall-3-on-3-news";
+import { NewsArticleCardImage } from "@/components/news/NewsArticleCardImage";
+import { fall3On3NewsWeeks } from "@/data/fall-3-on-3-news";
 import { getArticleBySlug } from "@/data/news";
 import { createPageMetadata } from "@/lib/page-metadata";
 
@@ -38,19 +38,12 @@ export default function Fall3On3LeagueNewsPage() {
                 className="group overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-lg"
               >
                 {article.image && (
-                  <div className="relative aspect-[16/10] overflow-hidden bg-light-bg">
-                    <CmsImage
-                      src={article.image}
-                      alt={article.title}
-                      fill
-                      className={
-                        isFall3On3NewsSlug(slug)
-                          ? "object-contain bg-light-bg transition-transform group-hover:scale-[1.02]"
-                          : "object-cover transition-transform group-hover:scale-105"
-                      }
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
+                  <NewsArticleCardImage
+                    slug={slug}
+                    src={article.image}
+                    alt={article.title}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 )}
                 <div className="p-6">
                   <p className="text-xs font-bold uppercase tracking-wider text-electric-blue">

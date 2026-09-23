@@ -286,19 +286,78 @@ export async function deleteTabGroup(slug: string): Promise<boolean> {
   return result.deletedCount > 0;
 }
 
+function collectNavHrefs(items: NavItem[], hrefs: Set<string>): void {
+  for (const item of items) {
+    if (item.href) hrefs.add(item.href);
+    if (item.children) collectNavHrefs(item.children, hrefs);
+  }
+}
+
+/** Add new config links (e.g. Mountie Gear For Sale) without wiping custom CMS navigation. */
+function moreMenuChildHrefs(): Set<string> {
+  const more = mainNavigation.find((item) => item.label === "More")?.children ?? [];
+  return new Set(more.map((child) => child.href).filter((href): href is string => Boolean(href)));
+}
+
+function mergeNavigationFromConfig(stored: NavItem[]): NavItem[] {
+  if (!stored.length) return mainNavigation;
+
+  const onlyUnderMore = moreMenuChildHrefs();
+  const storedWithoutDuplicateTopLevel = stored.filter(
+    (item) => !item.href || !onlyUnderMore.has(item.href),
+  );
+
+  const hrefs = new Set<string>();
+  collectNavHrefs(storedWithoutDuplicateTopLevel, hrefs);
+
+  const configMoreItem = mainNavigation.find((nav) => nav.label === "More");
+  const configMoreChildren = configMoreItem?.children ?? [];
+
+  let merged = storedWithoutDuplicateTopLevel.map((item) => {
+    if (item.label !== "More") return item;
+    collectNavHrefs(configMoreChildren, hrefs);
+    return { ...item, children: configMoreChildren };
+  });
+
+  if (configMoreItem && !merged.some((item) => item.label === "More")) {
+    collectNavHrefs(configMoreChildren, hrefs);
+    merged.push({ label: "More", children: configMoreChildren });
+  }
+
+  for (const item of mainNavigation) {
+    if (item.href && !hrefs.has(item.href)) {
+      merged.push(item);
+      hrefs.add(item.href);
+    }
+  }
+
+  return merged;
+}
+
 function resolveMainNavigation(stored: NavItem[] | undefined): NavItem[] {
   if (!stored?.length) return mainNavigation;
   if (!stored.some((item) => item.label === "News")) return mainNavigation;
-  return stored;
+  return mergeNavigationFromConfig(stored);
 }
 
 async function syncMainNavigationFromConfig(db: Awaited<ReturnType<typeof getDb>>): Promise<void> {
   const doc = await db.collection<{ key: string; items: NavItem[] }>(NAVIGATION).findOne({ key: "main" });
+  const now = new Date();
+
   if (!doc?.items?.some((item) => item.label === "News")) {
     await db.collection(NAVIGATION).updateOne(
       { key: "main" },
-      { $set: { key: "main", items: mainNavigation, updatedAt: new Date() } },
+      { $set: { key: "main", items: mainNavigation, updatedAt: now } },
       { upsert: true },
+    );
+    return;
+  }
+
+  const merged = mergeNavigationFromConfig(doc.items);
+  if (merged.length !== doc.items.length || JSON.stringify(merged) !== JSON.stringify(doc.items)) {
+    await db.collection(NAVIGATION).updateOne(
+      { key: "main" },
+      { $set: { items: merged, updatedAt: now } },
     );
   }
 }

@@ -24,7 +24,7 @@ const supportLinks = [
   { label: "Little Mounties Families Speak", href: "/little-mounties-families-speak" },
   { label: "Join", href: "/join" },
   { label: "Donate", href: "/donate" },
-  { label: "Mountie Gear For Sale", href: "/mountie-gear-for-sale" },
+  { label: "Gear Store Sale", href: "/mountie-gear-for-sale" },
   { label: "Gear Store (Game One)", href: "/shop" },
   { label: "Sponsors", href: "/sponsors" },
   { label: "Contact", href: "/contact" },

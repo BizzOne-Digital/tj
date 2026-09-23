@@ -56,7 +56,6 @@ export const mainNavigation: NavItem[] = [
       { label: "Elks Hoop Shoot", href: "/events/elks-hoop-shoot" },
     ],
   },
-  { label: "Mountie Gear For Sale", href: "/mountie-gear-for-sale" },
   {
     label: "More",
     children: [
@@ -64,7 +63,7 @@ export const mainNavigation: NavItem[] = [
       { label: "FAQ", href: "/faq" },
       { label: "Pricing", href: "/pricing" },
       { label: "Gear Store (Game One)", href: "/shop" },
-      { label: "Mountie Gear For Sale", href: "/mountie-gear-for-sale" },
+      { label: "Gear Store Sale", href: "/mountie-gear-for-sale" },
       { label: "Join", href: "/join" },
       { label: "Donate", href: "/donate" },
       { label: "Contact", href: "/contact" },

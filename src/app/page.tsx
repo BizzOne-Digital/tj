@@ -23,6 +23,7 @@ import { createMetadata } from "@/lib/seo";
 import { fall3On3League } from "@/data/fall-3-on-3-league";
 import { listPublishedNews, listPublishedPrograms, listPublishedSponsors } from "@/lib/cms";
 import { CmsImage } from "@/components/ui/CmsImage";
+import { NewsArticleCardImage } from "@/components/news/NewsArticleCardImage";
 
 const centralPaLionsTeamPhoto = `/${publicMedia.centralPaLions}/central-pa-lions-team-2025-26.jpg`;
 
@@ -362,15 +363,12 @@ export default async function HomePage() {
               className="group overflow-hidden rounded-lg border border-white/10 bg-white/5 transition-all hover:border-electric-blue/50"
             >
               {article.image && (
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <CmsImage
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    className="object-contain object-[top_center] transition-transform group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
+                <NewsArticleCardImage
+                  slug={article.slug}
+                  src={article.image}
+                  alt={article.title}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               )}
               <div className="p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-electric-blue">{article.category}</p>
