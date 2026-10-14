@@ -61,7 +61,6 @@ export const mainNavigation: NavItem[] = [
     children: [
       { label: "Sponsors", href: "/sponsors" },
       { label: "FAQ", href: "/faq" },
-      { label: "P-O Basketball Newsletters", href: "/newsletters" },
       { label: "Pricing", href: "/pricing" },
       {
         label: "Gear Store",

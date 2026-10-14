@@ -52,7 +52,6 @@ const staticRoutes = [
   "/sponsors",
   "/faq",
   "/news",
-  "/newsletters",
   "/shop",
   "/mountie-gear-for-sale",
   "/join",
