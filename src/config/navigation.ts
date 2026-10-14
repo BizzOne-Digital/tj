@@ -44,7 +44,6 @@ export const mainNavigation: NavItem[] = [
     children: [
       { label: "Latest Updates (Home)", href: "/#news" },
       { label: "All News & Articles", href: "/news" },
-      { label: "P-O Basketball Newsletters", href: "/newsletters" },
       { label: "3-on-3 League News", href: "/leagues/3-on-3-fall/news" },
     ],
   },
@@ -62,6 +61,7 @@ export const mainNavigation: NavItem[] = [
     children: [
       { label: "Sponsors", href: "/sponsors" },
       { label: "FAQ", href: "/faq" },
+      { label: "P-O Basketball Newsletters", href: "/newsletters" },
       { label: "Pricing", href: "/pricing" },
       {
         label: "Gear Store",

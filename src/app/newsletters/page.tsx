@@ -17,7 +17,7 @@ export default function PoBasketballNewslettersPage() {
   return (
     <>
       <PageHero
-        eyebrow="News"
+        eyebrow="More"
         title="P-O Basketball Newsletters"
         subtitle="P-O Dribble Drive Coaches Newsletter — past issues for coaches, families, and supporters."
       />
