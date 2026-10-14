@@ -44,6 +44,7 @@ export const mainNavigation: NavItem[] = [
     children: [
       { label: "Latest Updates (Home)", href: "/#news" },
       { label: "All News & Articles", href: "/news" },
+      { label: "P-O Basketball Newsletters", href: "/newsletters" },
       { label: "3-on-3 League News", href: "/leagues/3-on-3-fall/news" },
     ],
   },
