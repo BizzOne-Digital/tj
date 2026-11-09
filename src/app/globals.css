@@ -1,0 +1,151 @@
+@import "tailwindcss" source(none);
+
+/* Scan only src/ — exclude public/ Drive download folders */
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+
+@theme {
+  --color-deep-navy: #071735;
+  --color-mountie-blue: #173e7a;
+  --color-electric-blue: #2e6bff;
+  --color-black: #05070b;
+  --color-cool-grey: #aab2c0;
+  --color-light-bg: #f3f6fa;
+
+  --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-light-bg font-body text-deep-navy antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .form-input {
+    @apply w-full rounded-md border border-mountie-blue/20 bg-white px-4 py-3 text-deep-navy transition-colors placeholder:text-cool-grey focus:border-electric-blue focus:outline-none focus:ring-2 focus:ring-electric-blue/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-sm bg-electric-blue px-8 py-3 font-semibold uppercase tracking-wider text-white transition-all hover:bg-electric-blue/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-electric-blue disabled:opacity-50;
+  }
+
+  .court-lines {
+    background-image:
+      linear-gradient(90deg, rgba(46, 107, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(rgba(46, 107, 255, 0.15) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  }
+
+  .angle-divider-bottom {
+    @apply absolute bottom-0 left-0 right-0 h-16;
+    background: linear-gradient(to bottom right, transparent 49.5%, #f3f6fa 50%);
+  }
+
+  .angle-divider-bottom-dark {
+    @apply absolute bottom-0 left-0 right-0 h-16;
+    background: linear-gradient(to bottom right, transparent 49.5%, #071735 50%);
+  }
+
+  .program-card {
+    @apply relative overflow-hidden rounded-lg border border-mountie-blue/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-mountie-blue/10;
+  }
+
+  .program-card::before {
+    content: "";
+    @apply absolute left-0 top-0 h-1 w-full bg-electric-blue scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .program-card:hover::before {
+    @apply scale-x-100;
+  }
+
+  .halftone {
+    background-image: radial-gradient(circle, #173e7a 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  /* Bebas Neue is condensed — open tracking + line-height for readability */
+  .hero-title {
+    @apply font-display text-4xl uppercase leading-[1.12] tracking-[0.07em] md:text-5xl md:leading-[1.1] lg:text-6xl;
+  }
+
+  .section-title {
+    @apply font-display text-3xl uppercase leading-[1.15] tracking-[0.06em] md:text-4xl lg:text-5xl;
+  }
+}
+
+@layer utilities {
+  .loader-bounce {
+    animation: loaderBounce 1s ease-in-out infinite;
+  }
+
+  @keyframes loaderBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+    .loader-bounce {
+      animation: none;
+    }
+  }
+
+  .gallery-fluid-image {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  .gallery-photo {
+    height: auto !important;
+    max-height: none !important;
+    width: 100%;
+    object-fit: contain !important;
+    object-position: top center !important;
+  }
+}

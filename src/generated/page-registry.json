@@ -1,0 +1,347 @@
+{
+  "generatedAt": "2026-11-09T22:14:44.208Z",
+  "pages": [
+    {
+      "path": "/about",
+      "eyebrow": "About",
+      "title": "Mounties Youth Basketball",
+      "subtitle": null
+    },
+    {
+      "path": "/awards-records",
+      "eyebrow": "Achievements",
+      "title": "Awards & Record Book",
+      "subtitle": "Honoring excellence on and off the court."
+    },
+    {
+      "path": "/awards-records/league-all-stars",
+      "eyebrow": "Awards",
+      "title": "League All-Stars",
+      "subtitle": null
+    },
+    {
+      "path": "/awards-records/league-player-awards",
+      "eyebrow": "Awards",
+      "title": "League Player Awards",
+      "subtitle": null
+    },
+    {
+      "path": "/awards-records/record-book",
+      "eyebrow": "Achievements",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/awards-records/team-championships",
+      "eyebrow": "Awards",
+      "title": "Team League Championships",
+      "subtitle": null
+    },
+    {
+      "path": "/booking",
+      "eyebrow": "Training",
+      "title": "Request Training",
+      "subtitle": "Submit a training request — Coach Anderson will contact you to confirm availability."
+    },
+    {
+      "path": "/contact",
+      "eyebrow": "Contact",
+      "title": "Get in Touch",
+      "subtitle": "We're here to help with any questions about our programs."
+    },
+    {
+      "path": "/donate",
+      "eyebrow": "Support",
+      "title": "Donate",
+      "subtitle": "Help us continue building the Mountie tradition in Central PA."
+    },
+    {
+      "path": "/events",
+      "eyebrow": "Events",
+      "title": "Program Events",
+      "subtitle": "Fundraisers, championships, camps, and community events."
+    },
+    {
+      "path": "/events/cash-bash",
+      "eyebrow": "Events",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/events/elks-hoop-shoot",
+      "eyebrow": "Events",
+      "title": null,
+      "subtitle": "An incredible opportunity for boys and girls aged 8 to 13 to compete, set goals, and have fun."
+    },
+    {
+      "path": "/events/special-events",
+      "eyebrow": "Events",
+      "title": "Special Events",
+      "subtitle": null
+    },
+    {
+      "path": "/events/special-events/banquet",
+      "eyebrow": "Special Events",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/events/special-events/camps-clinic",
+      "eyebrow": "Special Events",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/events/special-events/elementary-summer-league",
+      "eyebrow": "Special Events",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/events/special-events/youth-camp",
+      "eyebrow": "Special Events",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/faq",
+      "eyebrow": "Help",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Answers to common questions about our programs."
+    },
+    {
+      "path": "/join",
+      "eyebrow": "Join Us",
+      "title": "Join the Mountie Family",
+      "subtitle": null
+    },
+    {
+      "path": "/leagues/3-on-3-fall",
+      "eyebrow": "Leagues",
+      "title": "3-on-3 P-O Fall Basketball League",
+      "subtitle": null
+    },
+    {
+      "path": "/leagues/3-on-3-fall/news",
+      "eyebrow": "3-on-3 Fall League",
+      "title": "League News",
+      "subtitle": "Weekly game results, standings, recaps, and photos — updated after each Saturday at the MS."
+    },
+    {
+      "path": "/leagues/elementary",
+      "eyebrow": "Leagues",
+      "title": "P-O Elementary League",
+      "subtitle": null
+    },
+    {
+      "path": "/leagues/elementary/results",
+      "eyebrow": "Leagues",
+      "title": "Game Results",
+      "subtitle": "Weekly scores and players of the week."
+    },
+    {
+      "path": "/leagues/elementary/schedule",
+      "eyebrow": "Leagues",
+      "title": "Elementary League Schedule",
+      "subtitle": null
+    },
+    {
+      "path": "/leagues/elementary/teams",
+      "eyebrow": "Leagues",
+      "title": "Elementary League Teams",
+      "subtitle": "Rosters, schedules, and team photos."
+    },
+    {
+      "path": "/little-mounties-families-speak",
+      "eyebrow": "Testimonials",
+      "title": "Little Mounties Families Speak",
+      "subtitle": "Stories from parents and players in our Philipsburg-Osceola youth basketball family."
+    },
+    {
+      "path": "/meet-the-mounties",
+      "eyebrow": "Teams",
+      "title": null,
+      "subtitle": null
+    },
+    {
+      "path": "/mountie-gear-for-sale",
+      "eyebrow": "Gear",
+      "title": "Mountie Gear For Sale",
+      "subtitle": "Limited items from our program. Quantities update as items are sold."
+    },
+    {
+      "path": "/news",
+      "eyebrow": "News",
+      "title": "News & Updates",
+      "subtitle": "Program announcements and league news."
+    },
+    {
+      "path": "/pricing",
+      "eyebrow": "Pricing",
+      "title": "Program Fees",
+      "subtitle": "Training, select league, and elementary program pricing."
+    },
+    {
+      "path": "/programs",
+      "eyebrow": "Programs",
+      "title": "Find Your Program",
+      "subtitle": "Camps, leagues, training, and travel teams for every age and skill level."
+    },
+    {
+      "path": "/programs/camps-clinics",
+      "eyebrow": "Programs",
+      "title": "Camps & Clinics",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/central-pa-lions",
+      "eyebrow": "AAU Travel",
+      "title": "Central PA Lions",
+      "subtitle": "AAU Travel Team Program"
+    },
+    {
+      "path": "/programs/little-dribblers",
+      "eyebrow": "Programs",
+      "title": "Little Dribblers",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp",
+      "eyebrow": "Programs",
+      "title": "P-O Youth Basketball Camp",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp/3-on-3",
+      "eyebrow": "Youth Camp",
+      "title": "3-on-3 Winners",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp/5-on-5",
+      "eyebrow": "Youth Camp",
+      "title": "5-on-5 Winners",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp/camp-mvp",
+      "eyebrow": "Youth Camp",
+      "title": "Camp MVP",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp/scholarship-day",
+      "eyebrow": "Youth Camp",
+      "title": "Competition/Scholarship Day",
+      "subtitle": null
+    },
+    {
+      "path": "/programs/youth-basketball-camp/scholarship-winners",
+      "eyebrow": "Youth Camp",
+      "title": "Scholarship Winners",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program",
+      "eyebrow": "Select Program",
+      "title": "P-O Select Program",
+      "subtitle": "1st Annual 2026 P-O Select Elementary Winter League"
+    },
+    {
+      "path": "/select-program/2026-27",
+      "eyebrow": "Select Program",
+      "title": "2026–27 Season",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/2027-28",
+      "eyebrow": "Select Program",
+      "title": "2027–28 Season",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/all-stars",
+      "eyebrow": "Select Program",
+      "title": "League All-Star Teams",
+      "subtitle": "2026–27 Season"
+    },
+    {
+      "path": "/select-program/game-results",
+      "eyebrow": "Select Program",
+      "title": "Game Results",
+      "subtitle": "Weekly scores and players of the week."
+    },
+    {
+      "path": "/select-program/league-champions",
+      "eyebrow": "Select Program",
+      "title": "League Champions",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/leagues",
+      "eyebrow": "Select Program",
+      "title": "Leagues",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/player-awards",
+      "eyebrow": "Select Program",
+      "title": "League Player Awards",
+      "subtitle": "2026–27 Season"
+    },
+    {
+      "path": "/select-program/season-recap",
+      "eyebrow": "Select Program",
+      "title": "Season Recap",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/select-teams",
+      "eyebrow": "Select Program",
+      "title": "Select Teams",
+      "subtitle": null
+    },
+    {
+      "path": "/select-program/team-photos",
+      "eyebrow": "Select Program",
+      "title": "The Select Teams",
+      "subtitle": "Team photos, schedules, and player photos."
+    },
+    {
+      "path": "/select-program/tournaments",
+      "eyebrow": "Select Program",
+      "title": "Tournaments",
+      "subtitle": null
+    },
+    {
+      "path": "/services",
+      "eyebrow": "Training & Development",
+      "title": "Elevate Your Game",
+      "subtitle": "Personalized basketball training for athletes at every level."
+    },
+    {
+      "path": "/shop",
+      "eyebrow": "Gear",
+      "title": "Mountie Gear Store",
+      "subtitle": "Official Philipsburg-Osceola Mountie Basketball apparel."
+    },
+    {
+      "path": "/sponsors",
+      "eyebrow": "Support",
+      "title": "Our Sponsors",
+      "subtitle": null
+    },
+    {
+      "path": "/state-championship",
+      "eyebrow": "Championship",
+      "title": "Elementary State Championship Program",
+      "subtitle": null
+    },
+    {
+      "path": "/team",
+      "eyebrow": "Teams",
+      "title": "Staff & Teams",
+      "subtitle": "The people behind the Mountie tradition."
+    }
+  ]
+}
